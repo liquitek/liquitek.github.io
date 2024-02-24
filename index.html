@@ -37,6 +37,7 @@ p::first-letter {
         <div style="position:fixed;top:0;left:0;right:0;bottom:0;z-index: -1;">
             <canvas id="space"></canvas>
         </div>
+        <a id="button" style="margin:1rem;padding:1rem;cursor:pointer;border:1px solid white">Warp!</a>
         
     <script>
         window.requestAnimFrame = (function(){   return  window.requestAnimationFrame})();
@@ -47,7 +48,7 @@ p::first-letter {
         var numStars = 1900;
         var radius = '0.'+Math.floor(Math.random() * 9) + 1  ;
         var focalLength = canvas.width;
-        var warp = 1;
+        var warp = false;
         var centerX, centerY;
 
         var stars = [], star;
@@ -96,9 +97,11 @@ p::first-letter {
         function drawStars(){
         var pixelX, pixelY, pixelRadius;
         
-        if(warp==0)
-        {c.fillStyle = "rgba(0,0,0,1)";
-        c.fillRect(0,0, canvas.width, canvas.height);}
+        if(warp)
+            {
+                c.fillStyle = "rgba(0,0,0,1)";
+                c.fillRect(0,0, canvas.width, canvas.height);
+            }
         c.fillStyle = "rgba(255, 255, 255, "+radius+")";
         for(i = 0; i < numStars; i++){
             star = stars[i];
@@ -117,6 +120,9 @@ p::first-letter {
 
 
         executeFrame();
+        document.querySelector("#button").addEventListener("click",()=>{
+            warp = warp ^ true;
+        });
         window.onresize = () => {
             canvas.width=canvas.offsetWidth;
             canvas.height=canvas.offsetHeight;
