@@ -926,6 +926,11 @@
                 padding:2%;
                 border:2px solid;
             }
+            .slick-initialized .slick-slide
+               {
+                   display: flex;
+                   flex-firection:column;
+               }
             .slider-section .slider-head {
                 font-family: Georgia, Times, Times New Roman, serif;
                 color:#006A52;
@@ -937,6 +942,8 @@
             }
             .slider-item-caption {
                 color:#22372B;
+                margin-top:auto;
+                margin-bottom:auto;
             }
             .card-wrap {
                 position:absolute;
@@ -966,7 +973,7 @@
             }
             .slick-track {
                 display:flex;
-                align-items:flex-end;
+                align-items:stretch;
             }
             .slider .flip-card {
                 background-color: transparent;
