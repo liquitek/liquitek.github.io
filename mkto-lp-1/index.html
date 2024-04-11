@@ -1,1 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Bootstrap demo</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <style>
 
+
+
+
+
+@import url('https://rsms.me/inter/inter.css');
+         @font-face {
+         font-family: rois_medium;
+
+         src: url('rois-medium_eot.eot?#iefix') format('embedded-opentype'),
+         url('rois-medium_woff2.woff2') format('woff2'),
+         url('rois-medium_woff.woff') format('woff'),
+         url('rois-medium_ttf.ttf') format('truetype'),
+         url('rois-medium_svg.svg#ralewayregular') format('svg');
+         src: url('')
+         font-weight: normal;
+         font-style: normal;
+         font-stretch: normal;
+         }
+         @font-face {
+         font-family: rois_bold;
+         src: url('rois-bold_eot.eot?#iefix') format('embedded-opentype'),
+         url('rois-bold_woff2.woff2') format('woff2'),
+         url('rois-bold_woff.woff') format('woff'),
+         url('rois-bold_ttf.ttf') format('truetype'),
+         url('rois-bold_svg.svg#ralewayregular') format('svg');
+         font-weight: bold;
+         font-style: normal;
+         font-stretch: normal;
+         }
+         .card img {
+         width:100%;
+         height:auto;
+         }
+         /* Gill Sans page impressions */
+         @import url("https://fast.fonts.net/lt/1.css?apiType=css&c=dc01eb17-c6af-4ec2-8169-daa64de76833&fontids=1603504");
+         @font-face{
+         font-family: gill_sans_extrabold;
+         /*
+         src:url('https://www.also.com/ec/cms5/media/css/webfonts/gill/extra_bold/gs_xbold_woff2.woff2') format('woff2'),
+         url('https://www.also.com/ec/cms5/media/css/webfonts/gill/extra_bold/gs_xbold_woff.woff') format('woff');*/
+         src:url('gs_xbold_woff2.woff2') format('woff2'),
+         url('gs_xbold_woff.woff') format('woff');
+         }
+         :root {
+         --bs-body-font-family:'Inter', sans-serif;
+         --bs-body-font-weight:300;
+         --font-family-heading: "rois_bold", "gill_sans_extrabold", Helvetica, Arial, sans-serif;
+         --bs-body-color:#141414;
+         }
+         @media (min-width:576px) {
+         :root {
+                font-size:1.125rem;
+            }
+         }
+         b, strong {
+            font-weight: bold;
+        }
+         .mktoText >:last-child {
+         margin-bottom: 0;
+         }
+         .mktoText:empty {
+         display: none;
+         }
+         .display-2 {
+         font-size: calc(1.75rem + 3.9vw);
+         }
+         .display-2 * {
+         font-size: inherit;
+         line-height: inherit;
+         }
+         .h3, h3 {
+            font-size: calc(1.766rem + 2.1vw);
+         }
+         .h4, h4 {
+            font-size: calc(1.325rem + .9vw);
+         }
+         .h5, h5 {
+          font-size: 1.67rem;
+         }
+         .h6, h6 {
+          font-size: 1.2rem;
+         }
+
+         @media (min-width: 1200px) {
+            .display-2 {
+            font-size: 4.75rem;
+            }
+            .h3, h3 {
+               font-size: 3.33rem;
+            }
+            .h4, h4 {
+               font-size: 2rem;
+            }
+         } 
+
+         h1,h2,h3,h4,h5,h6,
+         .h1,.h2,.h3,.h4,.h5,.h6 {
+         font-family: var(--font-family-heading);
+         line-height: 1 !important;
+         margin-bottom: 1.5em;
+         }
+         .h1 h2,
+         .h1 h3,
+         .h1 h4,
+         .h1 h5,
+         .h1 h6 {
+         font-size: inherit;
+         }
+
+         
+         .card {
+         max-width:30rem;
+         }
+         .btn {
+         /*! --bs-btn-font-size: ; */
+         --bs-btn-padding-x: 1.667em;
+         --bs-btn-padding-y: .833em;
+         --bs-btn-border-color: var(--bs-body-color);
+         --bs-btn-hover-border-color: var(--bs-body-color);
+         --bs-btn-bg: hsl(189, 100%, 25%);
+         --bs-btn-hover-bg: hsl(189, 80%, 35%);
+         --bs-btn-color: #fff;
+         --bs-btn-border-radius: 1.5em;
+         --bs-btn-border-width:2px;
+         --bs-btn-hover-color: #fff;
+         --bs-btn-font-weight:bold;
+         --bs-btn-line-height: 1.25;
+         }
+          .btn-transparent {
+              --bs-btn-bg:none;
+              --bs-btn-hover-bg:none;
+              --bs-btn-color:inherit;
+              --bs-btn-hover-color: inherit;
+              --bs-btn-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.15),0 1px 1px rgba(0, 0, 0, 0.075);
+          }
+        .btn-transparent a:hover {
+            
+        }
+         .btn a {
+         transition: inherit;
+         text-decoration: inherit;
+         font: inherit;
+         padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+         color:var(--bs-btn-color);
+         background:var(--bs-btn-bg);
+         border-radius: inherit;
+         border:var(--bs-border-width) var(--bs-border-style) var(--bs-btn-border-color);
+         }
+         .btn a:hover {
+         background: var(--bs-btn-hover-bg);
+         box-shadow: inset 0 0 5px rgba(0, 0, 0, .5) !important;
+         }
+         .mktoText.btn {
+         padding: 0;
+         border:none;
+         }
+        .mktoText.btn a {
+            display: block;
+        }
+         .logo-wrapper {
+            max-width:185px;
+         }
+         .logo-wrapper img {
+            width:100%;
+            height:auto
+         }
+         .logo-wrapper.bottom {
+            max-width:120px;
+         }
+         .image-wrapper img {
+         width: 100%;
+         height: auto;
+         }
+         .vendor-logo img {
+            max-width:100%;
+            height: auto;
+         }
+         .icon-wrapper {
+         padding-top:100%;
+         background: #006B7D;
+         }
+         .icon-wrapper img, .icon-wrapper svg {
+         width: 40%;
+         height: 40%;
+         object-fit: cover;
+         display: block;
+         margin: auto !important;
+         }  
+         .calendar-card sub {
+         line-height: inherit;
+         }
+         #agenda table p {
+         margin-bottom:.25rem;
+         }
+         #agenda table,tbody,td,th {
+         display: block;
+         flex-basis:auto;
+         }
+         #agenda tr {
+         display: flex;
+         flex-wrap: wrap;
+         }
+         #agenda td,th {
+         border:2px solid currentColor;
+         border-bottom:none;
+         padding:.5rem;
+         flex-basis: 0;
+         flex-grow: 1;
+         border-left: none;
+         }
+         #agenda td:first-child,th:first-child {
+         font-weight:bold;
+         border-left:none;
+         max-width:10rem;
+         }
+         #agenda td:last-child,th:last-child {
+         border-right:none;  
+         }
+         #agenda tr:first-child::after {
+         display: block;
+         content:'';
+         height: 1rem;
+         width: 100%;
+         }
+         .animated.slide-in-left {
+         transition: .2s ease-in-out transform;
+         }
+         .animated.slide-in-right-fade,
+         .animated.slide-in-top-fade,
+         .animated.slide-in-bottom-fade
+         {
+         transition: .2s ease-in-out transform, .2s ease-in-out opacity;
+         }
+         .animated.fade-animation {
+            transition: .3s ease opacity;
+         }
+         .animated.slide-in-left.start {
+         transform: translate(-100vw);
+         }
+         .animated.slide-in-right-fade.start {
+         transform: translate(3rem);
+         opacity: 0;
+         }
+         .animated.slide-in-top-fade.start {
+         transform: translate(0,-3rem);
+         opacity: 0;
+         }
+         .animated.slide-in-bottom-fade.start {
+         transform: translate(0,3rem);
+         opacity: 0;
+         }
+         .animated.fade-animation.start {
+            opacity: 0.0;
+         }
+         .fa-brands {
+            font:var(--fa-font-brands);
+         }
+         .socials > * {
+            margin-right:1em;
+            margin-bottom: 1em;
+         }
+         .socials > *:last-child {
+               margin-right:0;
+         }
+         .socials a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width:2em;
+            height:2em;
+            color:inherit;
+            text-decoration: none;
+            border-radius: 50%;
+            border:2px solid currentColor;
+            background: #fff;
+            transition: .5s ease filter, .5s ease border-color;
+         }
+         .socials a:hover {
+            filter:invert();
+            border-color:#fff;
+         }
+         footer a {
+            color:inherit;
+         }
+         footer ul {
+            list-style: none;
+            font-weight: 500;
+         }
+         footer ul li{
+            margin-bottom:.25rem;
+         }
+         .legal {
+            font-size:small;
+         }
+      </style>
+      <script>
+         document.addEventListener("DOMContentLoaded", function() {
+          
+           if ("IntersectionObserver" in window) {
+                var lazyImages = document.querySelectorAll("img");
+                var animated = document.querySelectorAll(".animated");
+             let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+               entries.forEach(function(entry) {
+                 if (entry.isIntersecting) {
+                   var lazyImage = entry.target;
+                   lazyImage.src = lazyImage.dataset.lazy;
+                   lazyImageObserver.unobserve(lazyImage);
+                   lazyImage.removeAttribute("data-lazy");
+                 }
+               });
+             });
+             let animationTrrigger = new IntersectionObserver(function(entries, observer) {
+               entries.forEach(function(entry) {
+                    var e = entry.target;
+                    if (entry.isIntersecting) {
+                     if (entry.target.dataset.threshold < entry.intersectionRatio) {
+                        e.classList.remove("start");
+                     } else e.classList.add("start");
+                     if (!entry.target.dataset.threshold) {
+                        e.classList.remove("start");
+                     }   
+                 } else {
+                     
+                     e.classList.add("start");
+                    }
+               });
+             },{rootMargin:"-10% 100%",threshold:[0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0]});
+             lazyImages.forEach(function(lazyImage) {
+               lazyImage.dataset.lazy = (!lazyImage.dataset.lazy) ? lazyImage.src : lazyImage.dataset.lazy;
+               lazyImage.removeAttribute('src');
+                  lazyImageObserver.observe(lazyImage);
+             });
+                animated.forEach(function(item) {
+                    animationTrrigger.observe(item);
+                });
+           }
+         });
+      </script>
+   </head>
+   <body>
+      <header>
+         <div class="container-fluid">
+            <div class="row py-3 px-3 px-md-5 pb-2">
+               <div class="col px-0 logo-wrapper">
+                  <div class="mktoText">
+                     <a href="https://also.com" target="_blank">
+                        <img alt="logo" src="logoipsum-215.svg">
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <main>
+         <section id="hero" class="position-relative" style="background: url('section_svg.svg') right 1rem / 1rem auto no-repeat, url('hero_svg_1.svg') right bottom / 350px auto no-repeat, url('hero_svg_2.svg') -8rem calc(100% + 10rem) / 350px auto no-repeat, #E6F03C linear-gradient(-30deg ,#E6F03C, #FF7031);">
+            <div style="" class="container-fluid position-relative pb-4 hero-container">
+               <div style="background: url('header.png') right top / cover no-repeat;" class="row col-md-10 px-3 px-md-5">
+                  <div class="col-12 px-0 text-center text-lg-end">
+                     <div class=" col-10 py-4 col-lg-5 ms-lg-4 d-inline-block image-wrapper p-sm-5 p-lg-3 p-xl-5"><img src="file:///C:/Users/Sasha/Desktop/Also/LP%20Templates/Event%20In%20A%20Box%20-%20Small%20Event/hero_image.svg"></div>
+                  </div>
+                  <div style="background: white;" class="col-12 col-lg-6 p-3 p-md-4 ">
+                     <div class="mktoText mb-3">
+                        <h1><strong>LOREM IPSUM</strong></h1>
+                     </div>
+                     <div class="mktoText mb-4">
+                        <h5><strong>Lorem Ipsum dolor sit amet</strong></h5>
+                     </div>
+                     <div class="mktoText btn">
+                        <a href="#">button link</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background: #FF7731 url('Blurred individuals in an expo.png') center / cover no-repeat; " id="abstract-1">
+            <div class="container-fluid py-4 py-lg-5">
+               <div class="row pe-3 pe-md-4 ">
+                  <div class="col-auto ps-3 ps-md-5 pe-md-5 display-2 py-3 pt-5 pb-3 bg-black animated slide-in-left start">
+                     <div class="ps-md-4 mktoText text-white text-break">
+                        <h2><strong>LOREM CLOUD SUMMIT</strong></h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-3 px-md-4 justify-content-between py-lg-4">
+                  <div style="" class="col-12 col-lg-6 pt-3 px-0 p-md-4 mb-3 mb-md-0 pt-lg-2">
+                     <div class="p-3 py-4 p-md-5 bg-white">
+                        <div class="mktoTex mb-0 text-break">
+                           <h3><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit</strong></h3>
+                        </div>
+                        
+                     </div>
+                  </div>
+                  <div style="" class="col-12 col-lg-6 px-0 p-md-4 pt-md-2">
+                     <div class="p-3 py-4 p-md-5 bg-white">
+                        <div class="mktoText mb-5 ">
+                           
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                        </div>
+                        <div class="mktoText btn">
+                           <a href="#">button link</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background: yellow;" id="abstract-2">
+            <div class="container-fluid">
+               <div class="row px-3 px-md-5 bg-white justify-content-center py-lg-4">
+                  <div style="" class="col-12 col-sm-10 col-lg-9 col-xl-8 p-3 px-0 py-5 pt-4 pt-md-5">
+                     <div class="mktoText mb-5 ">
+                        <h5><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit</strong></h5>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+                     </div>
+                     <div class="mktoText btn">
+                        <a href="#">button link</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background: #E6F03C url('section_svg.svg') right 2rem / 1rem auto no-repeat" id="location" class="py-5">
+            <div class="container-fluid py-lg-4">
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-3 ps-md-5 pe-md-5 display-2 py-3 pt-5 pb-3 bg-black animated slide-in-left start" style="z-index: 23;position: relative;">
+                     <div class="ps-md-4 mktoText text-white text-break">
+                        <h2><strong>WHEN &amp; WHERE</strong></h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-3 px-md-4 mt-3 justify-content-center justify-content-xxl-between ">
+                  <div class="col-10 px-0 px-md-4 col-sm-8 col-lg-4 d-flex text-center g-3 overflow-hidden">
+                     <div data-threshold="0.2" class="bg-white p-3 p-lg-5 py-5 flex-fill calendar-card animated fade-animation start">
+                        <div class="mktoText d-inline-block col-4 col-md-5 col-lg-4 mb-4 mb-lg-5 rounded-circle overflow-hidden">
+                           <div class="position-relative icon-wrapper">
+                              <div class="position-absolute top-0 start-0 end-0 bottom-0 d-flex">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="white" d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"></path>
+                                 </svg>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="mktoText ">
+                           <h4>Day
+                           </h4>
+                           <p>Thursday, October 12. 2023</p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-10 px-0 px-md-4 col-sm-8 col-lg-4 d-flex text-center g-3 overflow-hidden">
+                     <div data-threshold="0.2" class="bg-white p-3 p-lg-5 py-5 flex-fill calendar-card animated fade-animation start">
+                        <div class="mktoText d-inline-block col-4 col-md-5 col-lg-4 mb-4 mb-lg-5 rounded-circle overflow-hidden">
+                           <div class="position-relative icon-wrapper">
+                              <div class="position-absolute top-0 start-0 end-0 bottom-0 d-flex
+                                 ">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="#ffffff" d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"></path>
+                                 </svg>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="mktoText ">
+                           <h4>Time
+                           </h4>
+                           <p>09.00 - 15.00</p>
+                           <sub>Registration starts at 08.15</sub>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-10 px-0 px-md-4 col-sm-8 col-lg-4 d-flex text-center g-3 overflow-hidden">
+                     <div data-threshold="0.2" class="bg-white p-3 p-lg-5 py-5 flex-fill calendar-card animated fade-animation start">
+                        <div class="mktoText d-inline-block col-4 col-md-5 col-lg-4 mb-4 mb-lg-5 rounded-circle overflow-hidden">
+                           <div class="position-relative icon-wrapper">
+                              <div class="position-absolute top-0 start-0 end-0 bottom-0 d-flex
+                                 ">
+                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                    <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" fill="#ffffff"></path>
+                                 </svg>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="mktoText ">
+                           <h4>Location
+                           </h4>
+                           <p>Van Der Valk Tiel</p>
+                           <sub>Laan van Westroijen 10, 4003 AZ Tiel, Nederland</sub>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background: #FF7731;" id="agenda" class="pt-4">
+            <div class="container-fluid py-4">
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-3 ps-md-5 pe-md-5 display-2 py-3 pt-5 pb-3 bg-black animated slide-in-left start">
+                     <div class="ps-md-4 mktoText text-white  text-break">
+                        <h2><strong>AGENDA</strong></h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-3 px-md-4 justify-content-between py-lg-4">
+                  <div style="" class="col-12 col-lg-6 pt-3 px-0 p-md-4 mb-3 mb-md-0 pt-lg-2">
+                     <div class="p-3 py-4 p-md-5 bg-white">
+                        <div class="mktoText mb-5 ">
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</p>
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                        <div class="mktoText btn">
+                           <a href="#">button link</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div style="" class="col-12 col-lg-6 px-0 p-md-4 pt-lg-2">
+                     <div class="p-3 py-4 p-md-5 bg-white">
+                        <div class="mktoText">
+                           <table>
+                              <tbody>
+                                 <tr>
+                                    <th>Time</th>
+                                    <th>Agenda</th>
+                                 </tr>
+                                 <tr>
+                                    <td>09:00 - 09:45</td>
+                                    <td>
+                                       <p><strong>Welcome speech</strong></p>
+                                       by CEO of XX, John Doe
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>09:00 - 09:45</td>
+                                    <td>
+                                       <p><strong>How green can make a difference in sustainable carpets</strong></p>
+                                       by Workingtitle of Company name, Janice Doe
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>09:00 - 09:45</td>
+                                    <td>
+                                       <p><strong>Welcome speech</strong></p>
+                                       by CEO of XX, John Doe
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>09:00 - 09:45</td>
+                                    <td>
+                                       <p><strong>How green can make a difference in sustainable carpets</strong></p>
+                                       by Workingtitle of Company name, Janice Doe
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>09:00 - 09:45</td>
+                                    <td>
+                                       <p><strong>Welcome speech</strong></p>
+                                       by CEO of XX, John Doe
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background: #E6E6D7;" id="keynotes" class="py-5">
+            <div class="container-fluid py-lg-5">
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-3 ps-md-5 pe-md-5 display-2 py-3 pt-5 pb-3 bg-black animated slide-in-left start">
+                     <div class="ps-md-4 mktoText text-white  text-break">
+                        <h2><strong>KEYNOTES</strong></h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-md-5 px-0 animated slide-in-left start">
+                     <div class="p-3 px-md-4 mktoText bg-white">
+                        <h5><strong>Sed ut perspiciatis unde omnis iste natus error sit volup</strong></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-3 px-md-4 mt-3 justify-content-center">
+                  <div class="col-auto px-0 px-md-4 col-xxl-4 d-flex g-3">
+                     <div class="bg-white card flex-fill animated fade-animation start" data-threshold="0.3">
+                        <div class="mktoImg card-image"><img src="https://placehold.co/500x300/"></div>
+                        <div class="mktoText p-3  p-sm-4">
+                           <h5>Sed ut perspiciatis
+                           </h5>
+                        </div>
+                        <div class="mktoText p-3 p-sm-4 pt-0 pt-sm-0">
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatemsed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-auto px-0 px-md-4 col-xxl-4 d-flex g-3 justify-content-center">
+                     <div class="bg-white card flex-fill animated fade-animation start" data-threshold="0.3">
+                        <div class="mktoImg card-image"><img src="https://placehold.co/500x300/"></div>
+                        <div class="mktoText p-3  p-sm-4">
+                           <h5>Sed ut perspiciatis
+                           </h5>
+                        </div>
+                        <div class="mktoText p-3 p-sm-4 pt-0 pt-sm-0">
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatemsed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-auto px-0 px-md-4 col-xxl-4 d-flex g-3 justify-content-xxl-end">
+                     <div class="bg-white card flex-fill animated fade-animation" data-threshold="0.3">
+                        <div class="mktoImg card-image"><img src="https://placehold.co/500x300/"></div>
+                        <div class="mktoText p-3  p-sm-4">
+                           <h5>Sed ut perspiciatis
+                           </h5>
+                        </div>
+                        <div class="mktoText p-3 p-sm-4 pt-0 pt-sm-0">
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatemsed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-auto px-0 px-md-4 col-xxl-4 d-flex g-3">
+                     <div class="bg-white card flex-fill animated fade-animation start" data-threshold="0.3">
+                        <div class="mktoImg card-image"><img src="https://placehold.co/500x300/"></div>
+                        <div class="mktoText p-3  p-sm-4">
+                           <h5>Sed ut perspiciatis
+                           </h5>
+                        </div>
+                        <div class="mktoText p-3 p-sm-4 pt-0 pt-sm-0">
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatemsed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-auto px-0 px-md-4 col-xxl-4 d-flex g-3 justify-content-xxl-center">
+                     <div class="bg-white card flex-fill animated fade-animation start" data-threshold="0.3">
+                        <div class="mktoImg card-image"><img src="https://placehold.co/500x300/"></div>
+                        <div class="mktoText p-3  p-sm-4">
+                           <h5>Sed ut perspiciatis
+                           </h5>
+                        </div>
+                        <div class="mktoText p-3 p-sm-4 pt-0 pt-sm-0">
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatemsed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor </p>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-auto px-0 px-md-4 col-xxl-4 d-flex g-3 justify-content-xxl-end">
+                     <div class="bg-white card flex-fill animated fade-animation start" data-threshold="0.3">
+                        <div class="mktoImg card-image"><img src="https://placehold.co/500x300/"></div>
+                        <div class="mktoText p-3  p-sm-4">
+                           <h5>Sed ut perspiciatis
+                           </h5>
+                        </div>
+                        <div class="mktoText p-3 p-sm-4 pt-0 pt-sm-0">
+                           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatemsed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor </p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background: #ffffff;" id="vendors" class="py-5">
+            <div class="container-fluid py-lg-5">
+               <div class="row px-md-5 pe-3 pe-md-4">
+                  <div class="col-auto ps-3 ps-md-5 pe-md-5 display-2 py-3 pt-5 pb-3 bg-black animated slide-in-left start">
+                     <div class="ps-md-4 mktoText text-white  text-break">
+                        <h2><strong>THE VENDORS</strong></h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-md-5 pe-3 pe-md-4">
+                  <div class="col-auto ps-md-5 px-0 animated slide-in-left start">
+                     <div class="p-3 px-md-4 mktoText bg-white">
+                        <h5><strong>Sed ut perspiciatis unde omnis iste natus error sit volup</strong></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-md-5 mt-3 justify-content-center justify-content-xxl-between">
+                  <div class="col-8 col-sm-6 col-lg-4 g-4 d-flex">
+                     <div class="vendor-logo m-auto animated fade-animation start" data-threshold="0.2">
+                        <div class="mktoImg"><img src="https://placehold.co/300x100/"></div>       
+                     </div>
+                  </div>
+                  <div class="col-8 col-sm-6 col-lg-4 g-4 d-flex">
+                     <div class="vendor-logo m-auto animated fade-animation start" data-threshold="0.2">
+                        <div class="mktoImg"><img src="https://placehold.co/300x100/"></div>       
+                     </div>
+                  </div>
+                  <div class="col-8 col-sm-6 col-lg-4 g-4 d-flex">
+                     <div class="vendor-logo m-auto animated fade-animation start" data-threshold="0.2">
+                        <div class="mktoImg"><img src="https://placehold.co/300x100/"></div>       
+                     </div>
+                  </div>
+                  <div class="col-8 col-sm-6 col-lg-4 g-4 d-flex">
+                     <div class="vendor-logo m-auto animated fade-animation start" data-threshold="0.2">
+                        <div class="mktoImg"><img src="https://placehold.co/300x100/"></div>       
+                     </div>
+                  </div>
+                  <div class="col-8 col-sm-6 col-lg-4 g-4 d-flex">
+                     <div class="vendor-logo m-auto animated fade-animation start" data-threshold="0.2">
+                        <div class="mktoImg"><img src="https://placehold.co/300x100/"></div>       
+                     </div>
+                  </div>
+                  <div class="col-8 col-sm-6 col-lg-4 g-4 d-flex">
+                     <div class="vendor-logo m-auto animated fade-animation start" data-threshold="0.2">
+                        <div class="mktoImg"><img src="https://placehold.co/300x100/"></div>       
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background:  #E6F03C linear-gradient(-30deg ,#E6F03C, #FF7031);" id="form-section" class="py-5">
+            <div class="container-fluid py-lg-5">
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-3 ps-md-5 pe-md-5 display-2 py-3 pt-5 pb-3 bg-black animated slide-in-left start">
+                     <div class="ps-md-4 mktoText text-white  text-break">
+                        <h2><strong>REGISTER NOW</strong></h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-md-5 px-0 animated slide-in-left start">
+                     <div class="p-3 px-md-4 mktoText bg-white">
+                        <h5><strong>Sed ut perspiciatis unde omnis iste natus error sit volup</strong></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-3 px-md-5 mt-3 ">
+                  <div class="col-12 px-0 col-md-8 col-xl-7 col-xxl-5 g-3">
+                     <div class="mktoForm ">
+  <img style="width:100%;height:auto" src="https://placehold.co/800x600?text=Form+\nPlaceholder"></div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <section style="background: #E6E6D7;" id="save-the-date">
+            <div class="container-fluid py-5">
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-3 ps-md-5 pe-md-5 display-2 py-3 pt-5 pb-3 bg-black animated slide-in-left start">
+                     <div class="ps-md-4 mktoText text-white  text-break">
+                        <h2><strong>SAVE THE DATE</strong></h2>
+                     </div>
+                  </div>
+               </div>
+               <div class="row pe-3 pe-md-4">
+                  <div class="col-auto ps-md-5 px-0 animated slide-in-left start">
+                     <div class="p-3 px-md-4  mktoText bg-white">
+                        <h5><strong>Sed ut perspiciatis unde omnis iste natus error sit volup</strong></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="row px-3 px-md-5 mt-5">
+                  <div style="background: white;" class="col-12 col-sm-9 col-md-8 col-lg-6 col-xl-5 p-3 p-md-4 ">
+                     <div class="mktoText mb-3">
+                        <h6><strong>Registration will open 1st of December. </strong></h6>
+                        <p>Save the date for this event and signup for our newsletter to make sure to not miss any of our exclusive events.</p>
+                     </div>
+                     <div class="hstack">
+                        <div class="mktoText btn mb-3 me-3 me-sm-4 align-self-start">
+                           <a href="#">button link</a>
+                        </div>
+                        <div class="mktoText btn btn-transparent align-self-start">
+                           <a href="#">button link</a>
+                        </div>
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+         </section>
+      </main>
+      <footer>
+         <div class="container-fluid py-5">
+            <div class="row px-3 px-md-5">
+               <div class="col-6 col-sm-4">
+                  <div class="logo-wrapper bottom mb-3">
+                     <a href="#" target="_blank">
+                        <img alt="logo" src="logoipsum-215.svg">
+                     </a>
+                  </div>
+                  <div class="mktoText mb-3">
+                     <p>
+                        LOREM Holding AG
+                        <br>
+                        Loremstrasse 5
+                        <br>
+                        LR-666 Lorem
+                     </p>
+                     <p>
+                        +66 66 66 66
+                        <br>
+                        info@lorem.ips
+                     </p>
+                     
+                  </div>
+                  <div class="mktoText socials">
+                     <a href="#"><i class="fa-brands fa-linkedin-in"></i></a><a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                  <a href="#"><i class="fa-brands fa-youtube"></i></a></div>
+               </div>
+               <div class="col-6 col-sm-4">
+                  <div class="mktoText mb-3">
+                     <ul>
+                        <li><a name="footer" href="#">Vendors</a></li>
+                        <li><a name="footer" href="#">Webshop</a></li>
+                        <li><a name="footer" href="#">Cloud</a></li>
+                        <li><a name="footer" href="#">Company</a></li>
+                     </ul>
+                     
+                  </div>
+                  <div class="mktoText legal">
+                     <ul>
+                        <li><a name="footer" href="#">Cookie &amp; Third Party List</a></li>
+                        <li><a name="footer" href="#">Data Privacy Statement</a></li>
+                        <li><a name="footer" href="#">Imprint</a></li>
+                        <li><a name="footer" href="#">Terms of use</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!--script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script-->
+      <!--script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script-->
+   
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
