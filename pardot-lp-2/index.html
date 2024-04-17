@@ -761,7 +761,7 @@
                     </script> <input id="hiddenDependentFields" name="hiddenDependentFields" type="hidden" value="">
                   </form>
                    <script>
-                    document.querySelectorAll('.form input:not([type="checkbox"]),.form input:not([type="radio"]), .form textarea').forEach(e=>{e.addEventListener("change",(e)=>{e.target.dataset.value=e.target.value});e.dataset.value=e.value})
+                    document.querySelectorAll('.form input:not([type="checkbox"])]:not([type="radio"]), .form textarea').forEach(e=>{e.addEventListener("change",(e)=>{e.target.dataset.value=e.target.value});e.dataset.value=e.value})
                    </script>
             </div>
             <div class="col-12 col-md-6 ms-md-auto">
