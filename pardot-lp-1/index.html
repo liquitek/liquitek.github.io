@@ -675,7 +675,7 @@
               form.form p.submit { margin-left: 5px; }
               form.form p.no-label { margin-left: 50px; }
               form.form span.value { margin-left: 0px; }
-              form.form p span.description { margin-left: 0px; }
+              form.form p span.deion { margin-left: 0px; }
               form.form p.required label, form.form span.required label { background-position: top left; background: none; padding-left: 0px; }
               </style>
               <p class="form-field form-col-1 first_name pd-text required required-custom"><input class="text" id="93172_98854pi_93172_98854" maxlength="40" name="93172_98854pi_93172_98854" onchange="" onfocus="" size="30" type="text" value=""><label class="field-label" for="93172_98854pi_93172_98854">Text Field</label></p>
@@ -723,6 +723,9 @@
               //]]>
               </script> <input id="hiddenDependentFields" name="hiddenDependentFields" type="hidden" value="">
             </form>
+            <script>
+                    document.querySelectorAll('.form input:not([type="checkbox"]),.form input:not([type="radio"]), .form textarea').forEach(e=>e.addEventListener("change",(e)=>{e.target.dataset.value=e.target.value}))
+                   </script>
               <div class="row align-items-center mt-5">
                       <div class="col-3">
                         <div style="font-size:12px">Trusted by:</div>
