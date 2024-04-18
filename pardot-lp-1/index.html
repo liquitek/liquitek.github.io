@@ -1173,11 +1173,11 @@
             }
             e.preventDefault();
             });
-
+/*
             $('#carousel > div').click(function() {
             moveToSelected($(this));
             });
-
+*/
             $('#prev').click(function() {
 
                     moveToSelected($('#carousel .prev'));
@@ -1195,5 +1195,49 @@
                 });
             });
     </script>
+      <script>
+        var touchsurface = document.getElementById('carousel'),
+        startX,
+        startY,
+        dist,
+        threshold = 50, //required min distance traveled to be considered swipe
+        allowedTime = 200, // maximum time allowed to travel that distance
+        elapsedTime,
+        startTime,
+    	dragging=false
+ 
+    function handleswipe(dir){
+        if (!dir)
+            touchsurface.parentElement.querySelector("#next").click();
+        else{
+            touchsurface.parentElement.querySelector("#prev").click();
+        }
+    }
+ 
+    touchsurface.addEventListener('pointerdown', function(e){
+        dist = 0
+      	dragging=true;
+        startX = e.x
+        startY = e.y
+        startTime = new Date().getTime() // record time when finger first makes contact with surface
+        e.preventDefault()
+    }, false)
+
+    touchsurface.addEventListener('pointermove', function(e){
+      	if (dragging) 
+        e.preventDefault() // prevent scrolling when inside DIV
+    }, false)
+
+    touchsurface.addEventListener('pointerup', function(e){
+      	if (dragging) {
+        dragging=false;
+        dist = e.x - startX // get total dist traveled by finger while in contact with surface
+        elapsedTime = new Date().getTime() - startTime // get time elapsed
+        if (elapsedTime <= allowedTime && (dist >= threshold || -dist >= threshold) && Math.abs(e.y - startY) <= 100)
+        handleswipe(dist >= threshold)
+        e.preventDefault()
+        }
+    }, false)
+      </script>
   </body>
 </html>
