@@ -86,7 +86,7 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 var numStars = 3000;
 var radius = '0.' + Math.floor(Math.random() * 9) + 1;
-var focalLength = 1000;
+const focalLength = ()=>1000;
 var hyperspeed_off = true;
 var rotate = false; // Track whether rotation is enabled
 var centerX, centerY;
@@ -121,7 +121,7 @@ function initializeStars(){
         star = {
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            z: Math.random() * canvas.width,
+            z: Math.random() * 5000,
             o: '0.' + Math.floor(Math.random() * 99) + 1,
             speed: Math.random() * 10 + 1
         };
@@ -159,9 +159,9 @@ function drawStars(){
         var rotatedX = dx * cos - dy * sin;
         var rotatedY = dx * sin + dy * cos;
         
-        pixelX = (rotatedX * (focalLength / star.z)) + centerX;
-        pixelY = (rotatedY * (focalLength / star.z)) + centerY;
-        pixelRadius = 1 * (focalLength / star.z);
+        pixelX = (rotatedX * (focalLength() / star.z)) + centerX;
+        pixelY = (rotatedY * (focalLength() / star.z)) + centerY;
+        pixelRadius = 1 * (focalLength() / star.z);
         
         c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
         c.fillStyle = "rgba(255, 255, 255, " + star.o + ")";
