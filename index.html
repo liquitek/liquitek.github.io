@@ -56,6 +56,24 @@ window.requestAnimFrame = (function(){
 const TABLE_SIZE = 18000; // Higher resolution for more accuracy
 const sinTable = new Array(TABLE_SIZE);
 const cosTable = new Array(TABLE_SIZE);
+const dpr = window.devicePixelRatio || 1;
+function setupCanvas(canvas) {
+  // Get the device pixel ratio, falling back to 1.
+  var dpr = window.devicePixelRatio || 1;
+  // Get the size of the canvas in CSS pixels.
+  var rect = canvas.getBoundingClientRect();
+  // Give the canvas pixel dimensions of their CSS
+  // size * the device pixel ratio.
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  var ctx = canvas.getContext('2d');
+  // Scale all drawing operations by the dpr, so you
+  // don't have to worry about the difference.
+  ctx.scale(dpr, dpr);
+  ctx.width = rect.width;
+  ctx.height = rect.height;
+  return ctx;
+}
 
 // Populate the lookup tables
 for (let i = 0; i < TABLE_SIZE; i++) {
@@ -80,10 +98,8 @@ function getSinCos(angle) {
     return [sinValue, cosValue ];
 }
 
-var canvas = document.querySelector("#space");
-var c = canvas.getContext("2d");
-canvas.width = canvas.offsetWidth;
-canvas.height = canvas.offsetHeight;
+var c = setupCanvas(document.querySelector("#space"));
+
 var numStars = 3000;
 var radius = '0.' + Math.floor(Math.random() * 9) + 1;
 const focalLength = ()=>1000;
@@ -113,14 +129,14 @@ function executeFrame(currentTime){
 }
 
 function initializeStars(){
-    centerX = canvas.width / 2;
-    centerY = canvas.height / 2;
+    centerX = c.width / 2;
+    centerY = c.height / 2;
     
     stars = [];
     for(i = 0; i < numStars; i++){
         star = {
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height,
+            x: Math.random() * c.width,
+            y: Math.random() * c.height,
             z: Math.random() * 5000,
             o: '0.' + Math.floor(Math.random() * 99) + 1,
             speed: Math.random() * 10 + 1
@@ -135,7 +151,7 @@ function moveStars(deltaTime){
         star.z -= star.speed * deltaTime * 100; // Multiply by 100 to adjust the speed to a reasonable value
         
         if(star.z <= 0){
-            star.z = canvas.width;
+            star.z = 5000;
         }
     }
 }
@@ -147,7 +163,7 @@ function drawStars(){
     console.log(a.sinValue+" "+a.cosValue);*/
     if(hyperspeed_off){
         c.fillStyle = "rgba(0,0,0,1)";
-        c.fillRect(0, 0, canvas.width, canvas.height);
+        c.fillRect(0, 0, c.width, c.height);
     }
     c.fillStyle = "rgba(255, 255, 255, " + radius + ")";
     for(i = 0; i < numStars; i++){
@@ -180,8 +196,7 @@ document.querySelector("#button").addEventListener("click", () => {
 });
 
 window.onresize = () => {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    c = setupCanvas(document.querySelector("#space"));
     initializeStars();
 }
 
