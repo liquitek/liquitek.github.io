@@ -161,12 +161,12 @@ function drawStars(){
     var pixelX, pixelY, pixelRadius;
     var t =lastTime;
     const [ sin, cos ] = getSinCos(angle);
-    const [sint,cost] = getSinCos(t*.025);
+    const [sint,cost] = getSinCos(t*.00625);
     const [sint2,cost2] = getSinCos(t*.001);
     /*const a =  getSinCos(angle);
     console.log(a.sinValue+" "+a.cosValue);*/
     if(hyperspeed_off){
-        c.fillStyle = "rgba(0,0,0,1)";
+        c.fillStyle = "rgba(0,0,0,.16)";
         c.fillRect(0, 0, c.width, c.height);
     }
     c.fillStyle = "rgba(255, 255, 255, " + radius + ")";
@@ -174,7 +174,7 @@ function drawStars(){
         star = stars[i];
         
         // Apply rotation
-        var dx = star.x + c.width*.0005*sint - centerX;
+        var dx = star.x + c.width*.00125*sint - centerX;
         var dy = star.y + c.height*.1*cost2 - centerY;
         var rotatedX = dx * cos - dy * sin;
         var rotatedY = dx * sin + dy * cos;
