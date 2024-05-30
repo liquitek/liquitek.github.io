@@ -57,7 +57,8 @@ const TABLE_SIZE = 18000; // Higher resolution for more accuracy
 const sinTable = new Array(TABLE_SIZE);
 const cosTable = new Array(TABLE_SIZE);
 const dpr = window.devicePixelRatio || 1;
-function setupCanvas(canvas) {
+function setupCanvas(canvas,context) {
+  
   // Get the device pixel ratio, falling back to 1.
   var dpr = window.devicePixelRatio || 1;
   // Get the size of the canvas in CSS pixels.
@@ -66,13 +67,13 @@ function setupCanvas(canvas) {
   // size * the device pixel ratio.
   canvas.width = rect.width * dpr;
   canvas.height = rect.height * dpr;
-  var ctx = canvas.getContext('2d');
+  !context&&(context=canvas.getContext('2d'));
   // Scale all drawing operations by the dpr, so you
   // don't have to worry about the difference.
-  ctx.scale(dpr, dpr);
-  ctx.width = rect.width;
-  ctx.height = rect.height;
-  return ctx;
+  context.scale(dpr, dpr);
+  context.width = rect.width;
+  context.height = rect.height;
+  return context;
 }
 
 // Populate the lookup tables
@@ -196,7 +197,7 @@ document.querySelector("#button").addEventListener("click", () => {
 });
 
 window.onresize = () => {
-    c = setupCanvas(document.querySelector("#space"));
+    c = setupCanvas(document.querySelector("#space"),c);
     initializeStars();
 }
 
