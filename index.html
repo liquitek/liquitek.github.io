@@ -159,7 +159,10 @@ function moveStars(deltaTime){
 
 function drawStars(){
     var pixelX, pixelY, pixelRadius;
+    var t =lastTime;
     const [ sin, cos ] = getSinCos(angle);
+    const [sint,cost] = getSinCos(t*.025);
+    const [sint2,cost2] = getSinCos(t*.001);
     /*const a =  getSinCos(angle);
     console.log(a.sinValue+" "+a.cosValue);*/
     if(hyperspeed_off){
@@ -171,8 +174,8 @@ function drawStars(){
         star = stars[i];
         
         // Apply rotation
-        var dx = star.x - centerX;
-        var dy = star.y - centerY;
+        var dx = star.x + c.width*.0005*sint - centerX;
+        var dy = star.y + c.height*.1*cost2 - centerY;
         var rotatedX = dx * cos - dy * sin;
         var rotatedY = dx * sin + dy * cos;
         
