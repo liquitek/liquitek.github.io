@@ -42,6 +42,7 @@ p::first-letter {
         <a id="button" style="margin:1rem;padding:1rem;cursor:pointer;border:1px solid white;display: inline-block;">Push me!</a>
         
     <script>
+
 window.requestAnimFrame = (function(){
     return window.requestAnimationFrame ||
            window.webkitRequestAnimationFrame ||
@@ -50,6 +51,34 @@ window.requestAnimFrame = (function(){
                window.setTimeout(() => callback(performance.now()), 1000 / 60);
            };
 })();
+
+// Define the resolution of the lookup table
+const TABLE_SIZE = 3600; // Higher resolution for more accuracy
+const sinTable = new Array(TABLE_SIZE);
+const cosTable = new Array(TABLE_SIZE);
+
+// Populate the lookup tables
+for (let i = 0; i < TABLE_SIZE; i++) {
+    const angle = (i / TABLE_SIZE) * 2 * Math.PI;
+    sinTable[i] = Math.sin(angle);
+    cosTable[i] = Math.cos(angle);
+}
+
+// Function to get interpolated sine and cosine values
+function getSinCos(angle) {
+    let normalisedAngle = angle % (2*Math.PI);
+    normalisedAngle = normalisedAngle < 0 ? normalisedAngle + 2 * Math.PI :normalisedAngle;
+    const index = normalisedAngle / (2 * Math.PI) * TABLE_SIZE;
+    
+    const lowerIndex = Math.floor(index);
+    const upperIndex = (lowerIndex + 1) % TABLE_SIZE;
+    const t = index - lowerIndex;
+    
+    const sinValue = (1 - t) * sinTable[lowerIndex] + t * sinTable[upperIndex];
+    const cosValue = (1 - t) * cosTable[lowerIndex] + t * cosTable[upperIndex];
+    
+    return [sinValue, cosValue ];
+}
 
 var canvas = document.querySelector("#space");
 var c = canvas.getContext("2d");
@@ -65,7 +94,7 @@ var centerX, centerY;
 var stars = [], star;
 var i;
 
-var animate = true;
+
 var lastTime = performance.now();
 // Rotation speed around the Z-axis
 var rotationSpeed;
@@ -73,7 +102,7 @@ var rotationSpeed;
 var angle = 0; // Current rotation angle
 
 initializeStars();
-
+var animate = true;
 function executeFrame(currentTime){
     var deltaTime = (currentTime - lastTime) / 1000; // in seconds
     lastTime = currentTime;
@@ -113,9 +142,9 @@ function moveStars(deltaTime){
 
 function drawStars(){
     var pixelX, pixelY, pixelRadius;
-    var cosAngle = Math.cos(angle);
-    var sinAngle = Math.sin(angle);
-    
+    const [ sin, cos ] = getSinCos(angle);
+    /*const a =  getSinCos(angle);
+    console.log(a.sinValue+" "+a.cosValue);*/
     if(hyperspeed_off){
         c.fillStyle = "rgba(0,0,0,1)";
         c.fillRect(0, 0, canvas.width, canvas.height);
@@ -127,8 +156,8 @@ function drawStars(){
         // Apply rotation
         var dx = star.x - centerX;
         var dy = star.y - centerY;
-        var rotatedX = dx * cosAngle - dy * sinAngle;
-        var rotatedY = dx * sinAngle + dy * cosAngle;
+        var rotatedX = dx * cos - dy * sin;
+        var rotatedY = dx * sin + dy * cos;
         
         pixelX = (rotatedX * (focalLength / star.z)) + centerX;
         pixelY = (rotatedY * (focalLength / star.z)) + centerY;
