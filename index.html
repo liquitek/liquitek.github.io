@@ -39,10 +39,10 @@ p::first-letter {
         <div style="position:fixed;top:0;left:0;right:0;bottom:0;z-index: -1;">
             <canvas id="space"></canvas>
         </div>
-        <a id="button" style="margin:1rem;padding:1rem;cursor:pointer;border:1px solid white;display: inline-block;">Warp!</a>
+        <a id="button" style="margin:1rem;padding:1rem;cursor:pointer;border:1px solid white;display: inline-block;">Push me!</a>
         
     <script>
-        window.requestAnimFrame = (function(){
+window.requestAnimFrame = (function(){
     return window.requestAnimationFrame ||
            window.webkitRequestAnimationFrame ||
            window.mozRequestAnimationFrame ||
@@ -59,6 +59,7 @@ var numStars = 1900;
 var radius = '0.' + Math.floor(Math.random() * 9) + 1;
 var focalLength = canvas.width;
 var hyperspeed_off = true;
+var rotate = false; // Track whether rotation is enabled
 var centerX, centerY;
 
 var stars = [], star;
@@ -66,15 +67,18 @@ var i;
 
 var animate = true;
 var lastTime = performance.now();
+// Rotation speed around the Z-axis
+var rotationSpeed;
+
+var angle = 0; // Current rotation angle
 
 initializeStars();
 
 function executeFrame(currentTime){
     var deltaTime = (currentTime - lastTime) / 1000; // in seconds
     lastTime = currentTime;
-    
-    if(animate)
-        requestAnimFrame(executeFrame);
+    rotate&&(angle+=rotationSpeed * deltaTime);
+    animate&&requestAnimFrame(executeFrame);
     moveStars(deltaTime);
     drawStars();
 }
@@ -109,6 +113,8 @@ function moveStars(deltaTime){
 
 function drawStars(){
     var pixelX, pixelY, pixelRadius;
+    var cosAngle = Math.cos(angle);
+    var sinAngle = Math.sin(angle);
     
     if(hyperspeed_off){
         c.fillStyle = "rgba(0,0,0,1)";
@@ -118,10 +124,14 @@ function drawStars(){
     for(i = 0; i < numStars; i++){
         star = stars[i];
         
-        pixelX = (star.x - centerX) * (focalLength / star.z);
-        pixelX += centerX;
-        pixelY = (star.y - centerY) * (focalLength / star.z);
-        pixelY += centerY;
+        // Apply rotation
+        var dx = star.x - centerX;
+        var dy = star.y - centerY;
+        var rotatedX = dx * cosAngle - dy * sinAngle;
+        var rotatedY = dx * sinAngle + dy * cosAngle;
+        
+        pixelX = (rotatedX * (focalLength / star.z)) + centerX;
+        pixelY = (rotatedY * (focalLength / star.z)) + centerY;
         pixelRadius = 1 * (focalLength / star.z);
         
         c.fillRect(pixelX, pixelY, pixelRadius, pixelRadius);
@@ -133,6 +143,11 @@ executeFrame(performance.now());
 
 document.querySelector("#button").addEventListener("click", () => {
     hyperspeed_off = !hyperspeed_off;
+    if (Math.random() < 0.5) {
+        rotate = !rotate;
+        rotationSpeed=Math.random()*3 + 0.1;
+        rotationSpeed = (Math.random()<0.5)?rotationSpeed:-rotationSpeed;
+    }
 });
 
 window.onresize = () => {
@@ -140,6 +155,7 @@ window.onresize = () => {
     canvas.height = canvas.offsetHeight;
     initializeStars();
 }
+
 </script>
 </body>
 </html>
