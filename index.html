@@ -132,12 +132,12 @@ function executeFrame(currentTime){
 function initializeStars(){
     centerX = c.width / 2;
     centerY = c.height / 2;
-    
+    var bigger = c.width>c.height?c.width:c.height;
     stars = [];
     for(i = 0; i < numStars; i++){
         star = {
-            x: Math.random() * c.width,
-            y: Math.random() * c.height,
+            x: Math.random() * bigger + (c.width - bigger)*.5,
+            y: Math.random() * bigger + (c.height - bigger)*.5,
             z: Math.random() * 5000,
             o: '0.' + Math.floor(Math.random() * 99) + 1,
             speed: Math.random() * 10 + 1
