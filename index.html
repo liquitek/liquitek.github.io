@@ -174,7 +174,7 @@ document.querySelector("#button").addEventListener("click", () => {
     hyperspeed_off = !hyperspeed_off;
     if (Math.random() < 0.5) {
         rotate = !rotate;
-        rotationSpeed=Math.random()*3 + 0.1;
+        rotationSpeed=Math.random()*Math.PI*.5 + 0.05;
         rotationSpeed = (Math.random()<0.5)?rotationSpeed:-rotationSpeed;
     }
 });
